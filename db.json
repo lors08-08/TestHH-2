@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Петров Петр Петрович",
+      "date": "01.11.2020",
+      "spot": "Внешний Эксперт",
+      "mail": "petr@mail.ru",
+      "password": "petr123",
+      "number": "+7 928 123 12 12",
+      "title": "json-server",
+    },
+    {
+      "id": 2,
+      "name": "Сергеев Сергей Сергеевич",
+      "date": "01.11.2020",
+      "spot": "HR BP",
+      "mail": "serii@mail.ru",
+      "password": "serg123",
+      "number": "+7 928 123 12 12",
+      "title": "json-server",
+    },
+    {
+      "id": 3,
+      "name": "Иванов Иван Иванович",
+      "date": "01.11.2020",
+      "spot": "HR BP",
+      "mail": "ivan@mail.ru",
+      "password": "ivan123",
+      "number": "+7 928 123 12 12",
+      "title": "json-server",
+    }
+  ]
+}
