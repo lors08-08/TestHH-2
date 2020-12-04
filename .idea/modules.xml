@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/mozlabru.iml" filepath="$PROJECT_DIR$/.idea/mozlabru.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../spaprofilancegroup/.idea/spaprofilancegroup.iml" filepath="$PROJECT_DIR$/../spaprofilancegroup/.idea/spaprofilancegroup.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../TestHH-1-main/.idea/spaprofilancegroup.iml" filepath="$PROJECT_DIR$/../TestHH-1-main/.idea/spaprofilancegroup.iml" />
     </modules>
   </component>
 </project>

@@ -8,7 +8,7 @@
       "mail": "petr@mail.ru",
       "password": "petr123",
       "number": "+7 928 123 12 12",
-      "title": "json-server",
+      "title": "json-server"
     },
     {
       "id": 2,
@@ -18,7 +18,7 @@
       "mail": "serii@mail.ru",
       "password": "serg123",
       "number": "+7 928 123 12 12",
-      "title": "json-server",
+      "title": "json-server"
     },
     {
       "id": 3,
@@ -28,7 +28,7 @@
       "mail": "ivan@mail.ru",
       "password": "ivan123",
       "number": "+7 928 123 12 12",
-      "title": "json-server",
+      "title": "json-server"
     }
   ]
 }
