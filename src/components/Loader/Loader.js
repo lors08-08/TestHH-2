@@ -1,13 +1,13 @@
 import React from 'react';
 import styles from "./Loader.module.css"
-import CircularStatic from "../../styles/CircularProgressWithLabel";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 function Loader() {
 
   return (
     <div className={styles.box}>
       <div className={styles.spinner}>
-        <CircularStatic />
+        <CircularProgress />
         <div>Пожалуйста, подождите идет загрузка персонала</div>
       </div>
     </div>

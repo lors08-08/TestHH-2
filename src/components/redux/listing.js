@@ -12,7 +12,7 @@ function listing(state = initialState, action) {
     case "listing/load/succeed":
       return {
         ...state,
-        loading: true
+        loading: false
       }
     default:
       return state;
