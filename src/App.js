@@ -3,9 +3,10 @@ import styles from "./App.module.css"
 import Loader from "./components/Loader/Loader";
 import {useDispatch, useSelector} from "react-redux";
 import {loadUsers} from "./components/redux/actions";
-import { BrowserRouter as Router } from "react-router-dom";
 import Header from "./components/MainBox/Header/Header";
 import List from "./components/MainBox/ListBox/List";
+import Filter from "./components/MainBox/Filter/Filter";
+import Table from "./components/MainBox/Table/Table";
 
 function App() {
   const dispatch = useDispatch();
@@ -19,12 +20,12 @@ function App() {
     return <Loader />
   }
   return (
-    <Router>
       <div className={styles.box}>
-        <Header />
-        <List />
+          <Header />
+          <Filter />
+          <List />
+          <Table />
       </div>
-    </Router>
   );
 }
 
