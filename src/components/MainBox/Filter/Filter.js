@@ -11,7 +11,7 @@ function Filter(props) {
 
   const useStyles = makeStyles((theme) => ({
     root: {
-      justifyContent:"center"
+      justifyContent:"center",
     },
     formControlButton: {
       width:"200px",
@@ -32,6 +32,7 @@ function Filter(props) {
       fontWeight:"600",
       color:"#797979",
     }
+
   }));
   const classes = useStyles();
   const [state, setState] = React.useState({
@@ -41,7 +42,7 @@ function Filter(props) {
   return (
     <div className={styles.box}>
       <Grid className={classes.root} alignItems="center" alignContent="center" container spacing={1}>
-        <Grid item xs={2}>
+        <Grid item md={2} xs={6}>
           <FormControl
             className={classes.formControl}>
             <InputLabel
@@ -53,6 +54,7 @@ function Filter(props) {
               }}
               htmlFor="uncontrolled-native">ID</InputLabel>
             <NativeSelect
+
               disableUnderline={true}
               className={classes.selector}
               defaultValue={10}
@@ -63,7 +65,7 @@ function Filter(props) {
             </NativeSelect>
           </FormControl>
         </Grid>
-        <Grid item xs={2}>
+        <Grid item md={2} xs={6}>
           <FormControl
             className={classes.formControl}>
             <InputLabel
@@ -85,7 +87,7 @@ function Filter(props) {
             </NativeSelect>
           </FormControl>
         </Grid>
-        <Grid item xs={2}>
+        <Grid item md={2} xs={6}>
           <FormControl
             className={classes.formControl}>
             <InputLabel
@@ -107,7 +109,7 @@ function Filter(props) {
             </NativeSelect>
           </FormControl>
         </Grid>
-        <Grid item xs={2}>
+        <Grid item md={2} xs={6}>
           <FormControl
             className={classes.formControl}>
             <InputLabel
@@ -129,7 +131,7 @@ function Filter(props) {
             </NativeSelect>
           </FormControl>
         </Grid>
-        <Grid item xs={2}>
+        <Grid item md={2} xs={6}>
           <FormControl
             className={classes.formControlButton}>
             <Button variant="contained" color="primary">

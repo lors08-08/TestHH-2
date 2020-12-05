@@ -1,5 +1,6 @@
 const initialState = {
-  loading:false
+  loading:false,
+  users: []
 };
 
 function listing(state = initialState, action) {
@@ -12,6 +13,7 @@ function listing(state = initialState, action) {
     case "listing/load/succeed":
       return {
         ...state,
+        users: action.payload,
         loading: false
       }
     default:
