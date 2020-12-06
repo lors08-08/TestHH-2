@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styles from "./Table.module.css";
 import { useSelector } from "react-redux";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -6,14 +6,14 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 
 function Table() {
   const users = useSelector((state) => state.listing.users);
-  const [checked, setChecked] = useState(false)
+  const [checked, setChecked] = useState(false);
 
   const useStyles = makeStyles((theme) => ({
     button: {
       position: "relative",
       right: "70px",
-      width:"0px",
-      height:"0px"
+      width: "0px",
+      height: "0px",
     },
   }));
   const classes = useStyles();
@@ -29,7 +29,7 @@ function Table() {
           <th>Почта(логин)</th>
           <th>Пароль</th>
           <th>
-            Телефон, првязанный
+            Телефон, привязанный
             <br />
             мессенджеру
           </th>
@@ -37,10 +37,12 @@ function Table() {
 
         {users.map((user) => {
           return (
-            <tr className={styles.cellList}>
+            <tr key={user.id} className={styles.cellList}>
               <th className={styles.firstColumn}>
                 <Checkbox
-                  onChange={()=>{setChecked(!checked)}}
+                  onChange={() => {
+                    setChecked(!checked);
+                  }}
                   checked={checked}
                   className={classes.button}
                   color="primary"

@@ -1,6 +1,6 @@
 const initialState = {
-  loading:false,
-  users: []
+  loading: false,
+  users: [],
 };
 
 function listing(state = initialState, action) {
@@ -8,14 +8,25 @@ function listing(state = initialState, action) {
     case "listing/load/start":
       return {
         ...state,
-        loading: true
-      }
+        loading: true,
+      };
     case "listing/load/succeed":
       return {
         ...state,
         users: action.payload,
-        loading: false
-      }
+        loading: false,
+      };
+    case "listing/filtration/start":
+      return {
+        ...state,
+        filtrating: true,
+      };
+    case "listing/filtration/succeed":
+      return {
+        ...state,
+        users: action.payload,
+        filtrating: false,
+      };
     default:
       return state;
   }

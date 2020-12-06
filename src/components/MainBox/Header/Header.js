@@ -11,7 +11,7 @@ function Header(props) {
     root: {
       flexGrow: 1,
       boxShadow: "0 0 2px black",
-      zIndex:"99"
+      zIndex: "99",
     },
     tabs: {
       outline: "none",

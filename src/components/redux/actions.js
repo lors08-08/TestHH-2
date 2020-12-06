@@ -11,3 +11,13 @@ export function loadUsers() {
       });
   };
 }
+
+export function filteredUsers(filteredList) {
+  return (dispatch) => {
+    dispatch({ type: "listing/filtration/start" });
+    dispatch({
+      type: "listing/filtration/succeed",
+      payload: filteredList,
+    });
+  };
+}
