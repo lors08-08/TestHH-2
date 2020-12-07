@@ -3,11 +3,12 @@ import styles from "./Filter.module.css";
 import { Grid } from "@material-ui/core";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
-import NativeSelect from "@material-ui/core/NativeSelect";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import Button from "@material-ui/core/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { filteredUsers } from "../../redux/actions";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
 
 function Filter(props) {
   const useStyles = makeStyles((theme) => ({
@@ -29,18 +30,31 @@ function Filter(props) {
       borderRadius: "5px",
       padding: "8px 11px 8px 11px",
       boxShadow: "0 0 20px #bdbdbd",
-      fontSize: "10px",
+      fontSize: "9px",
       fontWeight: "600",
       color: "#797979",
     },
   }));
+
+  const handleId = (event) => {
+    setId(event.target.value);
+  };
+  const handleName = (event) => {
+    setName(event.target.value);
+  };
+  const handleSpot = (event) => {
+    setSpot(event.target.value);
+  };
+  const handleLogin = (event) => {
+    setLogin(event.target.value);
+  };
 
   const classes = useStyles();
 
   const dispatch = useDispatch();
   const users = useSelector((state) => state.listing.users);
 
-  const [id, setId] = useState(0);
+  const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [spot, setSpot] = useState("");
   const [login, setLogin] = useState("");
@@ -65,137 +79,140 @@ function Filter(props) {
         <Grid item md={2} xs={6}>
           <FormControl className={classes.formControl}>
             <InputLabel
+              shrink
+              id="demo-simple-select-placeholder-label-label"
               style={{
                 lineHeight: "1px",
                 color: "rgb(92 94 179)",
                 fontSize: "20px",
                 fontWeight: "bold",
               }}
-              htmlFor="uncontrolled-native"
             >
               ID
             </InputLabel>
-            <NativeSelect
-              disableUnderline={true}
+            <Select
+              disableUnderline
+              labelId="demo-simple-select-placeholder-label-label"
+              id="demo-simple-select-placeholder-label"
+              value={id}
+              onChange={handleId}
+              displayEmpty
               className={classes.selector}
-              defaultValue={10}
             >
-              <option value={10}>Введите ID</option>
-              <option onClick={() => setId(1)} value={20}>
-                1
-              </option>
-              <option onClick={() => setId(2)} value={30}>
-                2
-              </option>
-              <option onClick={() => setId(3)} value={40}>
-                3
-              </option>
-            </NativeSelect>
+              <MenuItem value="">
+                <em>Введите ID</em>
+              </MenuItem>
+              <MenuItem value={1}>1</MenuItem>
+              <MenuItem value={2}>2</MenuItem>
+              <MenuItem value={3}>3</MenuItem>
+            </Select>
           </FormControl>
         </Grid>
         <Grid item md={2} xs={6}>
           <FormControl className={classes.formControl}>
             <InputLabel
+              shrink
+              id="demo-simple-select-placeholder-label-label"
               style={{
                 lineHeight: "1px",
                 color: "rgb(92 94 179)",
                 fontSize: "20px",
                 fontWeight: "bold",
               }}
-              htmlFor="uncontrolled-native"
             >
               ФИО
             </InputLabel>
-            <NativeSelect
-              disableUnderline={true}
+            <Select
+              disableUnderline
+              labelId="demo-simple-select-placeholder-label-label"
+              id="demo-simple-select-placeholder-label"
+              value={name}
+              onChange={handleName}
+              displayEmpty
               className={classes.selector}
-              defaultValue={10}
             >
-              <option value={10}>Введите ФИО участника</option>
-              <option
-                onClick={() => setName("Петров Петр Петрович")}
-                value={20}
-              >
+              <MenuItem value="">
+                <em>Введите ФИО участника</em>
+              </MenuItem>
+              <MenuItem value="Петров Петр Петрович">
                 Петров Петр Петрович
-              </option>
-              <option
-                onClick={() => setName("Сергеев Сергей Сергеевич")}
-                value={30}
-              >
+              </MenuItem>
+              <MenuItem value="Сергеев Сергей Сергеевич">
                 Сергеев Сергей Сергеевич
-              </option>
-              <option
-                onClick={() => setName("Иванов Иван Иванович")}
-                value={30}
-              >
+              </MenuItem>
+              <MenuItem value="Иванов Иван Иванович">
                 Иванов Иван Иванович
-              </option>
-            </NativeSelect>
+              </MenuItem>
+            </Select>
           </FormControl>
         </Grid>
         <Grid item md={2} xs={6}>
           <FormControl className={classes.formControl}>
             <InputLabel
+              shrink
+              id="demo-simple-select-placeholder-label-label"
               style={{
                 lineHeight: "1px",
                 color: "rgb(92 94 179)",
-                fontSize: "21px",
+                fontSize: "20px",
                 fontWeight: "bold",
               }}
-              htmlFor="uncontrolled-native"
             >
               Должность
             </InputLabel>
-            <NativeSelect
-              disableUnderline={true}
+            <Select
+              disableUnderline
+              labelId="demo-simple-select-placeholder-label-label"
+              id="demo-simple-select-placeholder-label"
+              value={spot}
+              onChange={handleSpot}
+              displayEmpty
               className={classes.selector}
-              defaultValue={10}
             >
-              <option value={10}>Введите должность участника</option>
-              <option onClick={() => setSpot("Внешний Эксперт")} value={20}>
-                Внешний Эксперт
-              </option>
-              <option onClick={() => setSpot("HR BP")} value={30}>
-                HR BP
-              </option>
-            </NativeSelect>
+              <MenuItem value="">
+                <em>Введите должность участника</em>
+              </MenuItem>
+              <MenuItem value="Внешний Эксперт">Внешний Эксперт</MenuItem>
+              <MenuItem value="HR BP">HR BP</MenuItem>
+            </Select>
           </FormControl>
         </Grid>
         <Grid item md={2} xs={6}>
           <FormControl className={classes.formControl}>
             <InputLabel
+              shrink
+              id="demo-simple-select-placeholder-label-label"
               style={{
                 lineHeight: "1px",
                 color: "rgb(92 94 179)",
-                fontSize: "21px",
+                fontSize: "20px",
                 fontWeight: "bold",
               }}
-              htmlFor="uncontrolled-native"
             >
               Почта(логин)
             </InputLabel>
-            <NativeSelect
-              disableUnderline={true}
+            <Select
+              disableUnderline
+              labelId="demo-simple-select-placeholder-label-label"
+              id="demo-simple-select-placeholder-label"
+              value={login}
+              onChange={handleLogin}
+              displayEmpty
               className={classes.selector}
-              defaultValue={10}
             >
-              <option value={10}>Введите e-mai участника</option>
-              <option onClick={() => setLogin("petr@mail.ru")} value={20}>
-                petr@mail.ru
-              </option>
-              <option onClick={() => setLogin("serii@mail.ru")} value={30}>
-                serii@mail.ru
-              </option>
-              <option onClick={() => setLogin("ivan@mail.ru")} value={30}>
-                ivan@mail.ru
-              </option>
-            </NativeSelect>
+              <MenuItem value="">
+                <em>Введите должность участника</em>
+              </MenuItem>
+              <MenuItem value="petr@mail.ru">petr@mail.ru</MenuItem>
+              <MenuItem value="serii@mail.ru">serii@mail.ru</MenuItem>
+              <MenuItem value="ivan@mail.ru">ivan@mail.ru</MenuItem>
+            </Select>
           </FormControl>
         </Grid>
         <Grid item md={2} xs={6}>
           <FormControl className={classes.formControlButton}>
             <Button
-              onClick={() => console.log(id)}
+              onClick={() => dispatch(filteredUsers(filteredList))}
               variant="contained"
               color="primary"
             >
