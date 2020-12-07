@@ -23,17 +23,18 @@ function PopUp() {
     },
     root: {
       color:"#3f51b5",
-      fontSize:"19px !important"
+      fontWeight:"700"
     },
     column: {
       textAlign:"center"
     },
     formControlButton: {
       width: "200px",
-      paddingTop: "14px",
+      paddingTop: "17px",
     },
     formControl: {
-      width: "200px",
+      width: "220px",
+      wordBreak:"break-all"
     },
     myGridTop: {
       marginTop:"20px !important"
@@ -91,10 +92,10 @@ function PopUp() {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle className={classes.root} id="alert-dialog-title">{"Добавление данных о экспертах по оценке и руководителей"}</DialogTitle>
+        <DialogTitle className={classes.root} disableTypography id="alert-dialog-title">{"Добавление данных о экспертах по оценке и руководителей"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            <Grid className={classes.column} alignItems="center" direction="columns"  spacing={10}>
+            <Grid className={classes.column} container direction="column"  spacing={2}>
               <Grid className={classes.myGrid} item>
                 <FormControl className={classes.formControl}>
                   <InputLabel
@@ -103,11 +104,11 @@ function PopUp() {
                     style={{
                       lineHeight: "1px",
                       color: "rgb(92 94 179)",
-                      fontSize: "20px",
+                      fontSize: "17px",
                       fontWeight: "bold",
                     }}
                   >
-                    ID
+                    Дата регистрации
                   </InputLabel>
                   <Select
                     disableUnderline
@@ -135,11 +136,112 @@ function PopUp() {
                     style={{
                       lineHeight: "1px",
                       color: "rgb(92 94 179)",
-                      fontSize: "20px",
+                      fontSize: "17px",
                       fontWeight: "bold",
                     }}
                   >
-                    ID
+                    ФИО
+                  </InputLabel>
+                  <Select
+                    disableUnderline
+                    labelId="demo-simple-select-placeholder-label-label"
+                    id="demo-simple-select-placeholder-label"
+                    value={name}
+                    onChange={handleName}
+                    displayEmpty
+                    className={classes.selector}
+                  >
+                    <MenuItem value="">
+                      <em>Введите ФИО участника</em>
+                    </MenuItem>
+                    <MenuItem value="Петров Петр Петрович">
+                      Петров Петр Петрович
+                    </MenuItem>
+                    <MenuItem value="Сергеев Сергей Сергеевич">
+                      Сергеев Сергей Сергеевич
+                    </MenuItem>
+                    <MenuItem value="Иванов Иван Иванович">
+                      Иванов Иван Иванович
+                    </MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid className={classes.myGridTop} item>
+                <FormControl className={classes.formControl}>
+                  <InputLabel
+                    shrink
+                    id="demo-simple-select-placeholder-label-label"
+                    style={{
+                      lineHeight: "1px",
+                      color: "rgb(92 94 179)",
+                      fontSize: "17px",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Должность
+                  </InputLabel>
+                  <Select
+                    disableUnderline
+                    labelId="demo-simple-select-placeholder-label-label"
+                    id="demo-simple-select-placeholder-label"
+                    value={spot}
+                    onChange={handleSpot}
+                    displayEmpty
+                    className={classes.selector}
+                  >
+                    <MenuItem value="">
+                      <em>Введите должность участника</em>
+                    </MenuItem>
+                    <MenuItem value="Внешний Эксперт">Внешний Эксперт</MenuItem>
+                    <MenuItem value="HR BP">HR BP</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid className={classes.myGridTop} item>
+                <FormControl className={classes.formControl}>
+                  <InputLabel
+                    shrink
+                    id="demo-simple-select-placeholder-label-label"
+                    style={{
+                      lineHeight: "1px",
+                      color: "rgb(92 94 179)",
+                      fontSize: "17px",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Почта(логин)
+                  </InputLabel>
+                  <Select
+                    disableUnderline
+                    labelId="demo-simple-select-placeholder-label-label"
+                    id="demo-simple-select-placeholder-label"
+                    value={login}
+                    onChange={handleLogin}
+                    displayEmpty
+                    className={classes.selector}
+                  >
+                    <MenuItem value="">
+                      <em>Введите почту участника</em>
+                    </MenuItem>
+                    <MenuItem value="petr@mail.ru">petr@mail.ru</MenuItem>
+                    <MenuItem value="serii@mail.ru">serii@mail.ru</MenuItem>
+                    <MenuItem value="ivan@mail.ru">ivan@mail.ru</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid className={classes.myGridTop} item>
+                <FormControl className={classes.formControl}>
+                  <InputLabel
+                    shrink
+                    id="demo-simple-select-placeholder-label-label"
+                    style={{
+                      lineHeight: "1px",
+                      color: "rgb(92 94 179)",
+                      fontSize: "17px",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Пароль
                   </InputLabel>
                   <Select
                     disableUnderline
@@ -165,125 +267,30 @@ function PopUp() {
                     shrink
                     id="demo-simple-select-placeholder-label-label"
                     style={{
-                      lineHeight: "1px",
+                      lineHeight: "17px",
                       color: "rgb(92 94 179)",
-                      fontSize: "20px",
+                      fontSize: "17px",
                       fontWeight: "bold",
+                      textAlign:"left"
                     }}
                   >
-                    ID
+                    Телефон,привязанный к мессенджеру
                   </InputLabel>
                   <Select
                     disableUnderline
                     labelId="demo-simple-select-placeholder-label-label"
                     id="demo-simple-select-placeholder-label"
-                    value={id}
-                    onChange={handleId}
+                    value={login}
+                    onChange={handleLogin}
                     displayEmpty
                     className={classes.selector}
                   >
                     <MenuItem value="">
-                      <em>Введите ID</em>
+                      <em>Введите должность участника</em>
                     </MenuItem>
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={2}>2</MenuItem>
-                    <MenuItem value={3}>3</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid className={classes.myGridTop} item>
-                <FormControl className={classes.formControl}>
-                  <InputLabel
-                    shrink
-                    id="demo-simple-select-placeholder-label-label"
-                    style={{
-                      lineHeight: "1px",
-                      color: "rgb(92 94 179)",
-                      fontSize: "20px",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    ID
-                  </InputLabel>
-                  <Select
-                    disableUnderline
-                    labelId="demo-simple-select-placeholder-label-label"
-                    id="demo-simple-select-placeholder-label"
-                    value={id}
-                    onChange={handleId}
-                    displayEmpty
-                    className={classes.selector}
-                  >
-                    <MenuItem value="">
-                      <em>Введите ID</em>
-                    </MenuItem>
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={2}>2</MenuItem>
-                    <MenuItem value={3}>3</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid className={classes.myGridTop} item>
-                <FormControl className={classes.formControl}>
-                  <InputLabel
-                    shrink
-                    id="demo-simple-select-placeholder-label-label"
-                    style={{
-                      lineHeight: "1px",
-                      color: "rgb(92 94 179)",
-                      fontSize: "20px",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    ID
-                  </InputLabel>
-                  <Select
-                    disableUnderline
-                    labelId="demo-simple-select-placeholder-label-label"
-                    id="demo-simple-select-placeholder-label"
-                    value={id}
-                    onChange={handleId}
-                    displayEmpty
-                    className={classes.selector}
-                  >
-                    <MenuItem value="">
-                      <em>Введите ID</em>
-                    </MenuItem>
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={2}>2</MenuItem>
-                    <MenuItem value={3}>3</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid className={classes.myGridTop} item>
-                <FormControl className={classes.formControl}>
-                  <InputLabel
-                    shrink
-                    id="demo-simple-select-placeholder-label-label"
-                    style={{
-                      lineHeight: "1px",
-                      color: "rgb(92 94 179)",
-                      fontSize: "20px",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    ID
-                  </InputLabel>
-                  <Select
-                    disableUnderline
-                    labelId="demo-simple-select-placeholder-label-label"
-                    id="demo-simple-select-placeholder-label"
-                    value={id}
-                    onChange={handleId}
-                    displayEmpty
-                    className={classes.selector}
-                  >
-                    <MenuItem value="">
-                      <em>Введите ID</em>
-                    </MenuItem>
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={2}>2</MenuItem>
-                    <MenuItem value={3}>3</MenuItem>
+                    <MenuItem value="petr@mail.ru">petr@mail.ru</MenuItem>
+                    <MenuItem value="serii@mail.ru">serii@mail.ru</MenuItem>
+                    <MenuItem value="ivan@mail.ru">ivan@mail.ru</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>

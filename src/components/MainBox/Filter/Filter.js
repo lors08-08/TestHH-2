@@ -206,7 +206,7 @@ function Filter(props) {
               className={classes.selector}
             >
               <MenuItem value="">
-                <em>Введите должность участника</em>
+                <em>Введите почту участника</em>
               </MenuItem>
               <MenuItem value="petr@mail.ru">petr@mail.ru</MenuItem>
               <MenuItem value="serii@mail.ru">serii@mail.ru</MenuItem>
