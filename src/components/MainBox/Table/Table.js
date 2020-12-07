@@ -3,6 +3,7 @@ import styles from "./Table.module.css";
 import { useSelector } from "react-redux";
 import Checkbox from "@material-ui/core/Checkbox";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import AddUser from "./AddUser";
 
 function Table() {
   const users = useSelector((state) => state.listing.users);
@@ -60,6 +61,7 @@ function Table() {
           );
         })}
       </table>
+      <AddUser />
     </div>
   );
 }

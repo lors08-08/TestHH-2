@@ -34,6 +34,11 @@ function Filter(props) {
       fontWeight: "600",
       color: "#797979",
     },
+    myButton: {
+      fontSize:"9px",
+      padding:"10px 40px 10px 40px",
+      width:"200px"
+    }
   }));
 
   const handleId = (event) => {
@@ -72,9 +77,9 @@ function Filter(props) {
       <Grid
         className={classes.root}
         alignItems="center"
-        alignContent="center"
+        justify="center"
         container
-        spacing={1}
+        spacing={4}
       >
         <Grid item md={2} xs={6}>
           <FormControl className={classes.formControl}>
@@ -212,6 +217,7 @@ function Filter(props) {
         <Grid item md={2} xs={6}>
           <FormControl className={classes.formControlButton}>
             <Button
+              className={classes.myButton}
               onClick={() => dispatch(filteredUsers(filteredList))}
               variant="contained"
               color="primary"
