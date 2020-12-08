@@ -11,58 +11,124 @@ import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
+import {useDispatch} from "react-redux";
+import {addUser} from "../../redux/actions";
+import DateFnsUtils from "@date-io/date-fns";
+
+const useStyles = makeStyles((theme) => ({
+  myButton: {
+    fontSize: "9px",
+    padding: "10px 30px 10px 30px",
+    width: "200px",
+    marginTop:"20px",
+    margin:"auto"
+  },
+  root: {
+    color:"#3f51b5",
+    fontWeight:"700"
+  },
+  column: {
+    textAlign:"center"
+  },
+  formControlButton: {
+    width: "200px",
+    paddingTop: "17px",
+  },
+  formControl: {
+    width: "220px",
+    wordBreak:"break-all"
+  },
+  myGridTop: {
+    marginTop:"20px !important"
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+  underline: {
+    outline:"none",
+    backgroundColor: "white",
+    borderRadius: "5px",
+    padding: "4px 11px 4px 11px",
+    boxShadow: "0 0 20px #bdbdbd",
+    fontSize: "9px",
+    fontWeight: "600",
+    color: "#797979",
+    textAlign:"left",
+    "&&&:before": {
+      borderBottom: "none"
+    },
+    "&&:after": {
+      borderBottom: "none"
+    },
+    "&&:focus": {
+      outline:"none"
+    }
+  },
+  selector: {
+    backgroundColor: "white",
+    borderRadius: "5px",
+    padding: "4px 11px 4px 11px",
+    boxShadow: "0 0 20px #bdbdbd",
+    fontSize: "9px",
+    fontWeight: "600",
+    color: "#797979",
+    textAlign:"left"
+  },
+}));
 
 function PopUp() {
-  const useStyles = makeStyles((theme) => ({
-    myButton: {
-      fontSize: "9px",
-      padding: "10px 30px 10px 30px",
-      width: "200px",
-      marginTop:"20px",
-      margin:"auto"
-    },
-    root: {
-      color:"#3f51b5",
-      fontWeight:"700"
-    },
-    column: {
-      textAlign:"center"
-    },
-    formControlButton: {
-      width: "200px",
-      paddingTop: "17px",
-    },
-    formControl: {
-      width: "220px",
-      wordBreak:"break-all"
-    },
-    myGridTop: {
-      marginTop:"20px !important"
-    },
-    selectEmpty: {
-      marginTop: theme.spacing(2),
-    },
-    selector: {
-      backgroundColor: "white",
-      borderRadius: "5px",
-      padding: "4px 11px 4px 11px",
-      boxShadow: "0 0 20px #bdbdbd",
-      fontSize: "9px",
-      fontWeight: "600",
-      color: "#797979",
-      textAlign:"left"
-    },
-  }));
+  const dispatch = useDispatch()
+
+
+  const [newUserName, setNewUserName] = useState("");
+  const [newUserNum, setNewUserNum] = useState("");
+
+  const [newUserLogin, setNewUserLogin] = useState("");
+  const [newUserPass, setNewUserPass] = useState("");
+
+  const [id, setId] = useState("");
+  const [name, setName] = useState("");
+  const [spot, setSpot] = useState("");
+  const [login, setLogin] = useState("");
+
+  const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
+
+  const handleSetName = (e) => {
+    setNewUserName(e.target.value);
+  };
+  const handleSetNum = (e) => {
+    setNewUserNum(e.target.value);
+  };
+
+  const handleSetLogin = (e) => {
+    setNewUserLogin(e.target.value);
+  };
+  const handleSetPass = (e) => {
+    setNewUserPass(e.target.value);
+  };
+
+  const handleAdd = () => {
+    setOpen(false);
+    dispatch(addUser(newUserName, selectedDate, spot, newUserLogin, newUserPass, newUserNum))
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const classes = useStyles();
 
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
   };
 
   const handleId = (event) => {
@@ -78,12 +144,6 @@ function PopUp() {
     setLogin(event.target.value);
   };
 
-
-  const [id, setId] = useState("");
-  const [name, setName] = useState("");
-  const [spot, setSpot] = useState("");
-  const [login, setLogin] = useState("");
-
   return (
     <>
       <Dialog
@@ -96,6 +156,7 @@ function PopUp() {
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             <Grid className={classes.column} container direction="column"  spacing={2}>
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
               <Grid className={classes.myGrid} item>
                 <FormControl className={classes.formControl}>
                   <InputLabel
@@ -110,24 +171,22 @@ function PopUp() {
                   >
                     Дата регистрации
                   </InputLabel>
-                  <Select
-                    disableUnderline
-                    labelId="demo-simple-select-placeholder-label-label"
-                    id="demo-simple-select-placeholder-label"
-                    value={id}
-                    onChange={handleId}
-                    displayEmpty
-                    className={classes.selector}
-                  >
-                    <MenuItem value="">
-                      <em>Введите ID</em>
-                    </MenuItem>
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={2}>2</MenuItem>
-                    <MenuItem value={3}>3</MenuItem>
-                  </Select>
+                  <KeyboardDatePicker
+                    InputProps={{ classes }}
+                    disableToolbar
+                    variant="inline"
+                    format="MM/dd/yyyy"
+                    margin="normal"
+                    id="date-picker-inline"
+                    value={selectedDate}
+                    onChange={handleDateChange}
+                    KeyboardButtonProps={{
+                      'aria-label': 'change date',
+                    }}
+                  />
                 </FormControl>
               </Grid>
+              </MuiPickersUtilsProvider>
               <Grid className={classes.myGridTop} item>
                 <FormControl className={classes.formControl}>
                   <InputLabel
@@ -142,28 +201,23 @@ function PopUp() {
                   >
                     ФИО
                   </InputLabel>
-                  <Select
-                    disableUnderline
-                    labelId="demo-simple-select-placeholder-label-label"
-                    id="demo-simple-select-placeholder-label"
-                    value={name}
-                    onChange={handleName}
-                    displayEmpty
-                    className={classes.selector}
-                  >
-                    <MenuItem value="">
-                      <em>Введите ФИО участника</em>
-                    </MenuItem>
-                    <MenuItem value="Петров Петр Петрович">
-                      Петров Петр Петрович
-                    </MenuItem>
-                    <MenuItem value="Сергеев Сергей Сергеевич">
-                      Сергеев Сергей Сергеевич
-                    </MenuItem>
-                    <MenuItem value="Иванов Иван Иванович">
-                      Иванов Иван Иванович
-                    </MenuItem>
-                  </Select>
+                  <input
+                    onChange={handleSetName}
+                    value={newUserName}
+                    placeholder="Введите ФИО участника"
+                    style={{
+                    backgroundColor: "white",
+                    borderRadius: "5px",
+                    padding: "4px 11px 4px 11px",
+                    boxShadow: "0 0 20px #bdbdbd",
+                    fontSize: "9px",
+                    fontWeight: "600",
+                    color: "#797979",
+                    textAlign:"left",
+                    border:"0px",
+                    marginTop:"15px",
+                    height:"31px"
+                  }} />
                 </FormControl>
               </Grid>
               <Grid className={classes.myGridTop} item>
@@ -211,22 +265,23 @@ function PopUp() {
                   >
                     Почта(логин)
                   </InputLabel>
-                  <Select
-                    disableUnderline
-                    labelId="demo-simple-select-placeholder-label-label"
-                    id="demo-simple-select-placeholder-label"
-                    value={login}
-                    onChange={handleLogin}
-                    displayEmpty
-                    className={classes.selector}
-                  >
-                    <MenuItem value="">
-                      <em>Введите почту участника</em>
-                    </MenuItem>
-                    <MenuItem value="petr@mail.ru">petr@mail.ru</MenuItem>
-                    <MenuItem value="serii@mail.ru">serii@mail.ru</MenuItem>
-                    <MenuItem value="ivan@mail.ru">ivan@mail.ru</MenuItem>
-                  </Select>
+                  <input
+                    onChange={handleSetLogin}
+                    value={newUserLogin}
+                    placeholder="Введите почту"
+                    style={{
+                      backgroundColor: "white",
+                      borderRadius: "5px",
+                      padding: "4px 11px 4px 11px",
+                      boxShadow: "0 0 20px #bdbdbd",
+                      fontSize: "9px",
+                      fontWeight: "600",
+                      color: "#797979",
+                      textAlign:"left",
+                      border:"0px",
+                      marginTop:"15px",
+                      height:"31px"
+                    }} />
                 </FormControl>
               </Grid>
               <Grid className={classes.myGridTop} item>
@@ -243,22 +298,23 @@ function PopUp() {
                   >
                     Пароль
                   </InputLabel>
-                  <Select
-                    disableUnderline
-                    labelId="demo-simple-select-placeholder-label-label"
-                    id="demo-simple-select-placeholder-label"
-                    value={id}
-                    onChange={handleId}
-                    displayEmpty
-                    className={classes.selector}
-                  >
-                    <MenuItem value="">
-                      <em>Введите ID</em>
-                    </MenuItem>
-                    <MenuItem value={1}>1</MenuItem>
-                    <MenuItem value={2}>2</MenuItem>
-                    <MenuItem value={3}>3</MenuItem>
-                  </Select>
+                  <input
+                    type="password"
+                    onChange={handleSetPass}
+                    placeholder="Введите пароль"
+                    style={{
+                      backgroundColor: "white",
+                      borderRadius: "5px",
+                      padding: "4px 11px 4px 11px",
+                      boxShadow: "0 0 20px #bdbdbd",
+                      fontSize: "9px",
+                      fontWeight: "600",
+                      color: "#797979",
+                      textAlign:"left",
+                      border:"0px",
+                      marginTop:"15px",
+                      height:"31px"
+                    }} />
                 </FormControl>
               </Grid>
               <Grid className={classes.myGridTop} item>
@@ -276,22 +332,23 @@ function PopUp() {
                   >
                     Телефон,привязанный к мессенджеру
                   </InputLabel>
-                  <Select
-                    disableUnderline
-                    labelId="demo-simple-select-placeholder-label-label"
-                    id="demo-simple-select-placeholder-label"
-                    value={login}
-                    onChange={handleLogin}
-                    displayEmpty
-                    className={classes.selector}
-                  >
-                    <MenuItem value="">
-                      <em>Введите должность участника</em>
-                    </MenuItem>
-                    <MenuItem value="petr@mail.ru">petr@mail.ru</MenuItem>
-                    <MenuItem value="serii@mail.ru">serii@mail.ru</MenuItem>
-                    <MenuItem value="ivan@mail.ru">ivan@mail.ru</MenuItem>
-                  </Select>
+                  <input
+                    onChange={handleSetNum}
+                    value={newUserNum}
+                    placeholder="Введите номер телефона"
+                    style={{
+                      backgroundColor: "white",
+                      borderRadius: "5px",
+                      padding: "4px 11px 4px 11px",
+                      boxShadow: "0 0 20px #bdbdbd",
+                      fontSize: "9px",
+                      fontWeight: "600",
+                      color: "#797979",
+                      textAlign:"left",
+                      border:"0px",
+                      marginTop:"35px",
+                      height:"31px"
+                    }} />
                 </FormControl>
               </Grid>
             </Grid>
@@ -300,7 +357,7 @@ function PopUp() {
         <DialogActions>
           <Button
             className={classes.myButton}
-            onClick={handleClose} color="primary" autoFocus variant="contained" color="primary"
+            onClick={handleAdd} color="primary" autoFocus variant="contained" color="primary"
           >
             Применить фильтры
           </Button>
