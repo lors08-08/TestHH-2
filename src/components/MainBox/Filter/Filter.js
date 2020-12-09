@@ -16,32 +16,6 @@ import ThemeProvider from "@material-ui/styles/ThemeProvider";
 
 function Filter(props) {
 
-  const GlobalCss = withStyles({
-    // @global is handled by jss-plugin-global.
-    '@global': {
-      // You should target [class*="MuiButton-root"] instead if you nest themes.
-      '.MuiDataGrid-colCellWrapper': {
-        color:"#748bde",
-      }
-    },
-  })(() => null);
-
-  const theme = createMuiTheme({
-    overrides: {
-      MuiDataGrid: {
-        root: {
-          fontSize: '1rem',
-          "&&&:before": {
-            border: "none"
-          },
-          "&&:after": {
-            border: "none"
-          },
-        },
-      },
-    },
-  });
-
   const useStyles = makeStyles((theme) => ({
     root: {
       justifyContent: "center",
@@ -294,10 +268,6 @@ function Filter(props) {
           </FormControl>
         </Grid>
       </Grid>
-      {/*<div style={{ height: 400, width: '100%' }} >*/}
-      {/*    <GlobalCss />*/}
-      {/*    <DataGrid showCellRightBorder showColumnRightBorder rows={rows} columns={columns} pageSize={5} checkboxSelection />*/}
-      {/*</div>*/}
     </div>
   );
 }
