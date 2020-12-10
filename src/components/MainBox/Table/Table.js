@@ -14,10 +14,21 @@ const GlobalCss = withStyles({
     '.MuiDataGrid-colCellTitleContainer': {
       color:"#748bde",
       fontSize:"12px",
-      justifyContent:"center"
+      justifyContent:"center",
     },
     '.MuiDataGrid-cell': {
-      textAlign:"center"
+      justifyContent:"center",
+      lineHeight:"20px !important",
+      display:"flex !important",
+      alignItems:"center",
+      whiteSpace:"break-spaces !important"
+    },
+    '.MuiDataGrid-columnsContainer': {
+      justifyContent:"center",
+      lineHeight:"20px !important",
+      display:"flex !important",
+      alignItems:"center",
+      whiteSpace:"break-spaces !important"
     }
   },
 })(() => null);
@@ -29,14 +40,14 @@ function Table() {
   const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
     { field: 'date', headerName: 'Дата регистрации', width: 150 },
-    { field: 'name', headerName: 'ФИО', width: 120 },
-    { field: 'spot', headerName: 'Должность', width: 120},
-    { field: 'mail', headerName: 'Почта(логин)', width: 120},
-    { field: 'password', headerName: 'Пароль', width: 90},
+    { field: 'name', headerName: 'ФИО', width: 150 },
+    { field: 'spot', headerName: 'Должность', width: 140},
+    { field: 'mail', headerName: 'Почта(логин)', width: 140},
+    { field: 'password', headerName: 'Пароль', width: 140},
     {
       field: 'number',
       headerName: 'Телефон, привязанный к мессенджеру',
-      width: 160,
+      width: 170,
     }
   ];
 
@@ -54,7 +65,7 @@ function Table() {
     <div className={styles.box}>
       <div style={{ height: 300, width: '80%', margin:"auto"}} >
         <GlobalCss />
-        <DataGrid hideFooterSelectedRowCount={true} rowCount={3} showCellRightBorder showColumnRightBorder rows={users} columns={columns} pageSize={3} checkboxSelection />
+        <DataGrid headerHeight={60} rowHeight={60} autoHeight={true} hideFooterSelectedRowCount={true} rowCount={3} showCellRightBorder showColumnRightBorder rows={users} columns={columns} pageSize={3} checkboxSelection />
       </div>
       <AddUser />
     </div>
